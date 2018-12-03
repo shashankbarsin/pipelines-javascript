@@ -6,6 +6,9 @@ pool:
 variables:
   imageName: 'nodejssample:$(Build.BuildId)'
   # define two more variables dockerId and dockerPassword in the build pipeline in UI
+  dockerId: rubdevopsonacr
+  dockerPassword: 8MjZjbJR5zqifCllq9UpDx=WLx5c9tWD
+  
 
 steps:
 - script: |
