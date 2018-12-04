@@ -1,5 +1,5 @@
 # Create a container image for the NodeJS sample app
-# See http://docs.microsoft.com/azure/devops/pipelines/languages/docker for more information
+# # First stage of multi-stage build
 FROM node:alpine
 
 # Create app directory
@@ -10,12 +10,16 @@ WORKDIR /usr/src/app
 # where available
 COPY package*.json ./
 
+# Build and test
 RUN npm install
-# If you are building your code for production 
-# RUN npm install --only=production
+COPY . .
+RUN npm test
 
+# Second stage
+FROM node:alpine
+WORKDIR /usr/src/app
+RUN npm install --only=production
 # Bundle app source
 COPY . .
-
 EXPOSE 8080 
 CMD ["npm", "start"]
