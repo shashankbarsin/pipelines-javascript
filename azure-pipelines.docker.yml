@@ -23,5 +23,7 @@ steps:
     dockerFile: Dockerfile
     command: run
     imageName: $(imageName)
+    runInBackground: false
     containerName: containerWithTestResults
     containerCommand: ls
+    
