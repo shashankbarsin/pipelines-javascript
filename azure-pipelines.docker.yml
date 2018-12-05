@@ -16,3 +16,12 @@ steps:
     command: build
     imageName: $(imageName)
     arguments: --target test
+
+- task: Docker@1
+  displayName: Docker run
+  inputs:
+    dockerFile: Dockerfile
+    command: run
+    imageName: $(imageName)
+    containerName: containerWithTestResults
+    containerCommand: ls
