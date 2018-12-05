@@ -23,7 +23,9 @@ steps:
     dockerFile: Dockerfile
     command: run
     imageName: $(imageName)
-    runInBackground: false
     containerName: containerWithTestResults
-    containerCommand: ls
+
+- script: |
+    docker cp containerWithTestResults:/TEST-RESULTS.xml .
+    cat TEST-RESULTS.xml
     
