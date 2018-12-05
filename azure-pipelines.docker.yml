@@ -12,17 +12,7 @@ steps:
 - task: Docker@1
   displayName: Docker build
   inputs:
-    azureSubscriptionEndpoint: RMPM (afc11291-9826-46be-b852-70349146ddf8)
-    azureContainerRegistry: amazingboseb9e2
     dockerFile: Dockerfile
     command: build
     imageName: $(imageName)
-
-- task: Docker@1
-  displayName: Docker push
-  inputs:
-    azureSubscriptionEndpoint: RMPM (afc11291-9826-46be-b852-70349146ddf8)
-    azureContainerRegistry: amazingboseb9e2
-    dockerFile: Dockerfile
-    command: push
-    imageName: $(imageName)
+    arguments: --target test
